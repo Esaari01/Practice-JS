@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <title>Meal Planner</title>
+  </head>
+  <body>
+    <h1>Meal Planner</h1>
+    <div id="breakfast-section">
+      <h2>Breakfast</h2>
+      <input type="text" id="breakfast-input" placeholder="Enter breakfast meal">
+      <button id="breakfast-add-btn">Add</button>
+      <ul id="breakfast-list"></ul>
+    </div>
+
+    <div id="lunch-section">
+      <h2>Lunch</h2>
+      <input type="text" id="lunch-input" placeholder="Enter lunch meal">
+      <button id="lunch-add-btn">Add</button>
+      <ul id="lunch-list"></ul>
+    </div>
+
+    <div id="dinner-section">
+      <h2>Dinner</h2>
+      <input type="text" id="dinner-input" placeholder="Enter dinner meal">
+      <button id="dinner-add-btn">Add</button>
+      <ul id="dinner-list"></ul>
+    </div>
+
+    <div id="snack-section">
+      <h2>Snacks</h2>
+      <input type="text" id="snack-input" placeholder="Enter snack">
+      <button id="snack-add-btn">Add</button>
+      <ul id="snack-list"></ul>
+    </div>
+    <div class="form-group">
+      <label for="meal-time">Select Meal Time:</label>
+      <select class="form-control" id="meal-time">
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+        <option value="snack">Snack</option>
+      </select>
+    </div>
+
+    <label for="day-select">Choose a day:</label>
+<select id="day-select">
+  <option value="Monday">Monday</option>
+  <option value="Tuesday">Tuesday</option>
+  <option value="Wednesday">Wednesday</option>
+  <option value="Thursday">Thursday</option>
+  <option value="Friday">Friday</option>
+  <option value="Saturday">Saturday</option>
+  <option value="Sunday">Sunday</option>
+</select>
+
+    <script>
+      const breakfastInput = document.querySelector("#breakfast-input");
+      const breakfastAddBtn = document.querySelector("#breakfast-add-btn");
+      const breakfastList = document.querySelector("#breakfast-list");
+
+      const lunchInput = document.querySelector("#lunch-input");
+      const lunchAddBtn = document.querySelector("#lunch-add-btn");
+      const lunchList = document.querySelector("#lunch-list");
+
+      const dinnerInput = document.querySelector("#dinner-input");
+      const dinnerAddBtn = document.querySelector("#dinner-add-btn");
+      const dinnerList = document.querySelector("#dinner-list");
+
+      const snackInput = document.querySelector("#snack-input");
+      const snackAddBtn = document.querySelector("#snack-add-btn");
+      const snackList = document.querySelector("#snack-list");
+
+      breakfastAddBtn.addEventListener("click", function() {
+        const breakfastValue = breakfastInput.value;
+        const breakfastItem = document.createElement("li");
+        breakfastItem.textContent = breakfastValue;
+        breakfastList.appendChild(breakfastItem);
+      });
+
+      lunchAddBtn.addEventListener("click", function() {
+        const lunchValue = lunchInput.value;
+        const lunchItem = document.createElement("li");
+        lunchItem.textContent = lunchValue;
+        lunchList.appendChild(lunchItem);
+      });
+      dinnerAddBtn.addEventListener("click");
+    dinnerAddBtn.addEventListener("click", function() {
+        const dinnerValue = dinnerInput.value;
+        const dinnerItem = document.createElement("li");
+        dinnerItem.textContent = dinnerValue;
+        dinnerList.appendChild(dinnerItem);
+      });
+
+      snackAddBtn.addEventListener("click"), function() {
+        const snackValue = snackInput.value;
+        const snackItem = document.createElement("li");
+        snackItem.textContent = snackValue;
+        snackList.appendChild(snackItem);}
+        $( "#meal-day-input" ).datepicker();
+    </script>
+    <php>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+
+    </php>
+    <div id="calendar"></div>
+    <script>
+      $(document).ready(function() {
+  $('#calendar').fullCalendar({
+    events: [
+      {
+        title: 'Meal Plan',
+        start: '2023-02-04'
+      }
+    ]
+  });
+});
+$(document).ready(function() {
+  var calendar = $('#calendar').fullCalendar({
+    events: [
+      {
+        title: 'Meal Plan',
+        start: '2023-02-04'
+      }
+    ],
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay'
+    },
+    selectable: true,
+    select: function(start, end, allDay) {
+      var title = prompt('Enter meal plan:');
+      var mealTime = $('#meal-time').val();
+      if (title) {
+        switch (mealTime) {
+          case 'breakfast':
+            start.setHours(8);
+            start.setMinutes(0);
+            break;
+          case 'lunch':
+            start.setHours(12);
+            start.setMinutes(0);
+            break;
+          case 'dinner':
+            start.setHours(18);
+            start.setMinutes(0);
+            break;
+          case 'snack':
+            start.setHours(14);
+            start.setMinutes(0);
+            break;
+        }
+        calendar.fullCalendar('renderEvent', {
+            title: title,
+            start: start,
+            end: end,
+            allDay: allDay
+          },
+          true // make the event "stick"
+        );
+      }
+      calendar.fullCalendar('unselect');
+    }
+  });
+});
+const daySelect = document.querySelector("#day-select");
+daySelect.addEventListener("change", function() {
+  // get the selected day value
+  const selectedDay = daySelect.value;
+  
+  // perform action based on the selected day value, such as updating the calendar display
+});
+    </script>
+  </body>
+</html>
